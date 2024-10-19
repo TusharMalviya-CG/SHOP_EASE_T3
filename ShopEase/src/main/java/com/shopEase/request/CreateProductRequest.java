@@ -3,7 +3,6 @@ package com.shopEase.request;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.shopEase.model.Category;
 import com.shopEase.model.Size;
 import com.shopEase.user.domain.ProductSize;
 
@@ -30,7 +29,7 @@ public class CreateProductRequest {
 
     private Set<Size> size=new HashSet<>();
 
-    private String imageUrl;
+//    private String imageUrl;
 
     private String topLavelCategory;
     private String secondLavelCategory;

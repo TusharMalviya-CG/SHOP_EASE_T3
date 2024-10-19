@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.shopEase.exception.ProductException;
-import com.shopEase.model.Category;
+import com.shopEase.model.Category_p;
 import com.shopEase.model.Product;
 import com.shopEase.repository.CategoryRepository;
 import com.shopEase.repository.ProductRepository;
@@ -37,22 +37,22 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public Product createProduct(CreateProductRequest req) {
 		
-		Category topLevel=categoryRepository.findByName(req.getTopLavelCategory());
+		Category_p topLevel=categoryRepository.findByName(req.getTopLavelCategory());
 		
 		if(topLevel==null) {
 			
-			Category topLavelCategory=new Category();
+			Category_p topLavelCategory=new Category_p();
 			topLavelCategory.setName(req.getTopLavelCategory());
 			topLavelCategory.setLevel(1);
 			
 			topLevel= categoryRepository.save(topLavelCategory);
 		}
 		
-		Category secondLevel=categoryRepository.
+		Category_p secondLevel=categoryRepository.
 				findByNameAndParant(req.getSecondLavelCategory(),topLevel.getName());
 		if(secondLevel==null) {
 			
-			Category secondLavelCategory=new Category();
+			Category_p secondLavelCategory=new Category_p();
 			secondLavelCategory.setName(req.getSecondLavelCategory());
 			secondLavelCategory.setParentCategory(topLevel);
 			secondLavelCategory.setLevel(2);
@@ -60,10 +60,10 @@ public class ProductServiceImplementation implements ProductService {
 			secondLevel= categoryRepository.save(secondLavelCategory);
 		}
 
-		Category thirdLevel=categoryRepository.findByNameAndParant(req.getThirdLavelCategory(),secondLevel.getName());
+		Category_p thirdLevel=categoryRepository.findByNameAndParant(req.getThirdLavelCategory(),secondLevel.getName());
 		if(thirdLevel==null) {
 			
-			Category thirdLavelCategory=new Category();
+			Category_p thirdLavelCategory=new Category_p();
 			thirdLavelCategory.setName(req.getThirdLavelCategory());
 			thirdLavelCategory.setParentCategory(secondLevel);
 			thirdLavelCategory.setLevel(3);

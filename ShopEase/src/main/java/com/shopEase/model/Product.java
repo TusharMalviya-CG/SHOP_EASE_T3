@@ -73,7 +73,7 @@ public class Product {
 
     @ManyToOne()
     @JoinColumn(name="category_id")
-    private Category category;
+    private Category_p category;
     
     private LocalDateTime createdAt;
     
@@ -83,7 +83,7 @@ public class Product {
 
 	public Product(Long id, String title, String description, int price, int discountedPrice, int discountPersent,
 			int quantity, String brand, String color, Set<Size> sizes, List<Rating> ratings,
-			List<Review> reviews, int numRatings, Category category, LocalDateTime createdAt) {
+			List<Review> reviews, int numRatings, Category_p category, LocalDateTime createdAt) {
 		super();
 		this.id = id;
 		this.title = title;
